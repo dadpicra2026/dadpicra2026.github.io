@@ -28,20 +28,9 @@
           <h1 class="title is-1 headline">Delay-Aware Diffusion Policy: Bridging the Observation–Execution Gap in Dynamic Tasks</h1>
           <div class="is-size-5 byline">
             <span class="byline-item">
-              <a href="#">Auther One</a><sup>1,2</sup>,</span>
-              <a href="#">Auther Two</a><sup>2</sup>,</span>
-              <a href="#">Auther Three</a><sup>2, 3</sup>,</span>    
-              ...          
+              Annonymous Authors  
             </span>                            
           </div>
-
-          <div class="is-size-5 byline">
-            <span class="byline-item"><sup>1</sup>Institution One,</span>
-            <span class="byline-item"><sup>2</sup>Institution Two,</span>
-            <span class="byline-item"><sup>3</sup>Institution Three</span>
-            ...
-          </div>
-
           <div class="column has-text-centered">
             <div class="action-bar">
               <!-- Paper (PDF) -->
@@ -64,16 +53,6 @@
                   <span>Video</span>
                 </a>
               </span>
-              <!-- Dataset -->
-              <span class="action-item">
-                <a href="#dataset"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Dataset</span>
-                </a>
-              </span>
               <!-- Code -->
               <span class="action-item">
                 <a href="#"
@@ -81,7 +60,7 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (coming soon)</span>
                 </a>
               </span>
             </div>
@@ -113,7 +92,6 @@
   </div>
 </section>
 
-
 <!-- Additional static items below abstract -->
 <section class="section">
   <div class="container is-max-desktop">
@@ -124,14 +102,14 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              enter abstract
+              As a robot senses and selects actions, the world keeps changing. This inference delay creates a gap of tens to hundreds of milliseconds between the observed state and the state at execution. In this work, we take the natural generalization from zero delay to measured delay during training and inference. We introduce Delay-Aware Diffusion Policy (DA-DP), a framework for explicitly incorporating inference delays into policy learning. DA-DP corrects zero-delay trajectories to their delay-compensated counterparts, and augments the policy with delay conditioning. We empirically validate DA-DP on a variety of tasks, robots, and delays and find its success rate more robust to delay than delay-unaware methods. DA-DP is architecture agnostic and transfers beyond diffusion policies, offering a general pattern for delay-aware imitation learning. More broadly, DA-DP encourages evaluation protocols that report performance as a function of measured latency, not just task difficulty.
             </p>
           </div>
         </div>
       </div>
       <div class="column is-5">
-        <video id="video" controls muted playsinline preload="metadata" style="width: 100%; border-radius: 10px;">
-          <source src="./static/videos/video.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/pingpong_dadp.mp4" type="video/mp4">
         </video>
       </div>
     </div>
