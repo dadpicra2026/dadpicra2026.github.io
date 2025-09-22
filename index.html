@@ -68,19 +68,26 @@
           <!-- Two images side by side -->
           <div class="columns is-mobile is-centered" style="margin-top: 0.75rem;">
             <div class="column is-half has-text-centered">
-              <img src="./static/images/pingpong_dp.png"
-                   style="border-radius: 10px; width: 100%; height: auto;"
-                   loading="lazy"/>
+              <figure>
+                <img src="./static/images/pingpong_dp.png"
+                     style="border-radius: 10px; width: 100%; height: auto;"
+                     loading="lazy"/>
+                <figcaption class="is-size-6" style="margin-top: 0.5rem;">
+                  Diffusion Policy (DP) struggles with computation delays and fails to hit the ball in the ping-pong task.
+                </figcaption>
+              </figure>
             </div>
             <div class="column is-half has-text-centered">
-              <img src="./static/images/pingpong_dadp.png"
-                   style="border-radius: 10px; width: 100%; height: auto;"
-                   loading="lazy"/>
+              <figure>
+                <img src="./static/images/pingpong_dadp.png"
+                     style="border-radius: 10px; width: 100%; height: auto;"
+                     loading="lazy"/>
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">
+                      Our Delay-Aware Diffusion Policy (DA-DP) successfully handles highly dynamic, reactive tasks under inference delays.
+                    </figcaption>
+              </figure>
             </div>
           </div>
-          <p class="subtitle is-5" style="margin-top: 0.5rem;">
-            While Diffusion Policy (DP) struggles with computation delays and fails to hit the ball in the ping-pong task, our Delay-Aware Diffusion Policy (DA-DP) successfully handles highly dynamic, reactive tasks under inference delays.
-          </p>
         </div>
       </div>
     </div>
@@ -127,5 +134,40 @@
     <!--/ Abstract. -->
   </div>
 </section>
+
+  <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Pick up rolling ball results</h2>
+        <div class="content has-text-justified">
+          <p>
+            We train StageACT on teleoperated demonstrations collected with a whole-body setup: a Unitree G1 with Dex-3 hands, where an Apple Vision Pro tracks the operator’s hands and retargets them to the robot via inverse kinematics. Locomotion is issued as simple base velocity commands while the operator controls arms and hands, which makes loco-manipulation teleop practical. The resulting dataset has 135 successful demos, gathered by two operators over two days in two offices (>8 hours). Each trajectory logs a 480×640 egocentric RGB image, a 29-D robot state (upper body, both hands, 
+          </p>
+          <div class="content has-text-centered" style="margin-top: 0.5rem;">
+            <div style="max-width: 720px; margin: 0 auto;">
+              <img src="./static/images/fig_method_teleop_v2.png" alt="Whole-body teleoperation overview" style="border-radius: 10px; width: 100%; height: auto;" loading="lazy"/>
+              <p class="is-size-6 has-text-grey" style="margin-top: 0.5rem;">Overview of whole body teleoperation setup based on the G1 humanoid robot.</p>
+            </div>
+          </div>
+
+          <p>
+            To inject temporal context, we annotate five stages (search, approach, rotate, push, stop) offline, combining visual inspection with proprioceptive cues, where sharp torque spikes indicate contact transitions. During training and evaluation, these stage labels are one-hot vectors concatenated with the usual inputs so the policy can disambiguate look-alike observations and avoid mode collapse.
+          </p>
+          <div class="content has-text-centered" style="margin-top: 0.5rem;">
+            <div style="max-width: 720px; margin: 0 auto;">
+              <img src="./static/images/fig_method_phase_annotation_robot_v2.png" alt="Door opening phase annotation" style="border-radius: 10px; width: 100%; height: auto;" loading="lazy"/>
+              <p class="is-size-6 has-text-grey" style="margin-top: 0.5rem;">Long-horizon task of door opening categorized into sub-stages.</p>
+            </div>
+          </div>
+          <p>
+            The learning recipe follows ACT with a small modification for stage input: we optimize a standard imitation reconstruction loss together with a KL regularizer, predict ~3-second action chunks, and temporally smooth them for stable execution. Hyperparameters and procedures mirror ACT, with changes only to accept the stage vector.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
